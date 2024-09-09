@@ -1,0 +1,182 @@
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+body{
+	font-family: Montserrat;
+	--salmon: #E15140;
+	background-image: linear-gradient(135deg, transparent, #231817);
+	background-color: #130807;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 20px 0;
+	min-height: 100vh;
+}
+.dashboard{
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	grid-template-areas: "header"
+						 "content"
+						 "footer";
+	width: clamp(320px, 72vw, 1400px);
+	border-radius: 12px;
+	overflow: hidden;
+	height: fit-content;
+	animation: slide-up forwards 1.2s 0.5s, appear both 1s 0.5s;
+	box-shadow: -6px -6px 2px #291e1c, 6px 6px 2px #000c;
+	container-type: inline-size;
+}
+header{
+	max-height: 120px;
+	grid-area: header;
+	background-color: var(--salmon);
+	color: #fff;
+	position: relative;
+	font-size: clamp(18px, 3.2vw, 50px);
+}
+header, footer{
+	display: flex;
+	padding: 8px;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+.content{
+	display: grid;
+	grid-area: content;
+	grid-template-columns: 3fr 14fr;
+	grid-template-areas: "section main";
+	padding: 6px;
+	gap: 6px;
+}
+a{
+	color: #BF2F1E;
+	text-decoration: none;
+}
+section{
+	grid-area: section;
+}
+main, section, .dashboard{
+	background-color: #FEF5F4;
+}
+main, section, .dashboard, h2{
+	transition: 0.3s;
+}
+main{
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(242px, 1fr));
+	grid-area: main;
+	gap: 70px 20px;
+}
+footer{
+	font-size: clamp(12px, 2.2vw, 32px);
+	color: #fff;
+	grid-area: footer;
+	max-height: 100px;
+	background-color: #000;
+}
+main img{
+	padding: 3px;
+	width: 240px;
+	background-color: var(--salmon);
+	height: 200px;
+	transition: 0.6s;
+	margin: 30px auto;
+}
+h2{
+	font-size: clamp(20px, 2.6vw, 34px);
+}
+ul{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	height: 75vh;
+	gap: 3px;
+	list-style: none;
+	font-size: clamp(12px, 2.2vw, 18px);
+}
+section, main{
+	padding: 4px;
+}
+main img:hover{
+	box-shadow: 0 0 12px #E1514099;
+}
+@keyframes slide-up{
+	from{
+		transform: translateY(40px);
+	}
+	to{
+		transform: translateY(0px);
+	}
+}
+@keyframes appear{
+	from{
+		opacity: 0;
+	}
+	to{
+		opacity: 1;
+	}
+}
+@keyframes move-left{
+	from{
+		transform: translateX(40px);
+	}
+	to{
+		transform: translateY(0);
+	}
+}
+@keyframes move-right{
+	from{
+		transform: translateX(-40px);
+	}
+	to{
+		transform: translateY(0);
+	}
+}
+main img:nth-child(even){
+	animation: move-left forwards 1s 1s, appear both 1s 1s;
+	animation-range: auto;
+}
+main img:nth-child(odd){
+	animation: move-right forwards 1s 1s, appear both 1s 1s;
+	animation-range: auto;
+}
+@container (max-width: 670px){
+	main img:nth-child(even), main img:nth-child(odd){
+		animation: move-right forwards 1s 1s, appear both 1s 1s;
+	}
+}
+input[type="checkbox"]{
+	display: none;
+}
+input[type="checkbox"]:checked ~ .dashboard, input[type="checkbox"]:checked ~ .dashboard main, input[type="checkbox"]:checked ~ .dashboard section{
+	background-color: #1E1514;
+	color: #FFF;
+}
+input[type="checkbox"]:checked ~ .dashboard a{
+	color: var(--salmon);
+}
+input[type="checkbox"]:checked ~ .dashboard header{
+	background-color: var(--salmon);
+}
+label{
+	background-color: transparent;
+	user-select: none;
+	padding: 5px;
+	cursor: pointer;
+	color: #fff;
+	position: absolute;
+	top: 5px;
+	border-radius: 8px;
+	right: 7px;
+}
+label:hover{
+	background-color: #BF2F1E;
+}
+label:active{
+	background-color: #fff;
+	color: var(--salmon);
+}
