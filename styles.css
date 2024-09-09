@@ -16,18 +16,18 @@ body{
 	min-height: 100vh;
 }
 .dashboard{
-	overflow: hidden;
 	display: grid;
 	grid-template-rows: auto auto auto;
 	grid-template-areas: "header"
 						 "content"
 						 "footer";
-	width: clamp(360px, 72vw, 1400px);
+	width: clamp(240px, 70vw, 1400px);
 	border-radius: 12px;
 	height: fit-content;
 	animation: slide-up forwards 1.2s 0.5s, appear both 1s 0.5s;
 	box-shadow: -6px -6px 2px #291e1c, 6px 6px 2px #000c;
 	container-type: inline-size;
+	overflow: hidden;
 }
 header{
 	max-height: 120px;
@@ -35,21 +35,23 @@ header{
 	background-color: var(--salmon);
 	color: #fff;
 	position: relative;
-	font-size: clamp(14px, 2.8vw, 50px);
+	font-size: clamp(14px, 2.5vw, 50px);
 }
 header, footer{
 	display: flex;
-	padding: 8px;
+	padding: 8px 0;
 	justify-content: center;
 	align-items: center;
 }
 .content{
 	display: grid;
 	grid-area: content;
-	grid-template-columns: auto 1fr;
+	grid-template-columns: 20% 80%;
 	grid-template-areas: "nav main";
-	padding: 6px;
-	gap: 6px;
+	gap: 8px;
+}
+.content, header, footer{
+	width: max-width: 100%;
 }
 a{
 	color: #AF1F0E;
@@ -67,9 +69,10 @@ main, nav, .dashboard, h2{
 }
 main{
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(172px, 1fr));
 	grid-area: main;
-	gap: 70px 20px;
+	padding: 10px;
+	gap: 70px 25px;
 }
 footer{
 	font-size: clamp(12px, 2.2vw, 32px);
@@ -80,9 +83,9 @@ footer{
 }
 main img{
 	padding: 3px;
-	width: clamp(120px, 20vw, 240px);
+	width: clamp(80px, 17vw, 168px);
 	background-color: var(--salmon);
-	height: clamp(96px, calc(20vw*0.8), 192px);
+	height: clamp(64px, calc(17vw*0.8), 134px);
 	transition: 0.6s;
 	margin: 30px auto;
 }
@@ -95,12 +98,11 @@ ul{
 	justify-content: space-evenly;
 	height: 75vh;
 	gap: 3px;
-	padding: 6px 0;
 	list-style: none;
 	font-size: clamp(13px, 1.8vw, 18px);
 }
-nav, main{
-	padding: 6px;
+h2, ul{
+	padding: 0.5vw;
 }
 main img:hover{
 	box-shadow: 0 0 12px #E1514099;
@@ -145,10 +147,10 @@ main img:nth-child(odd){
 	animation: move-right forwards 1s 1s, appear both 1s 1s;
 	animation-range: auto;
 }
-@container (max-width: 670px){
+@container(max-width: 440px){
 	main img:nth-child(even), main img:nth-child(odd){
 		animation: move-right forwards 1s 1s, appear both 1s 1s;
-	}
+	} 
 }
 input[type="checkbox"]{
 	display: none;
@@ -166,10 +168,10 @@ input[type="checkbox"]:checked ~ .dashboard header{
 label{
 	background-color: transparent;
 	user-select: none;
-	padding: 5px;
+	padding: 6px;
+	position: absolute;
 	cursor: pointer;
 	color: #fff;
-	position: absolute;
 	top: 5px;
 	border-radius: 8px;
 	right: 7px;
@@ -180,4 +182,43 @@ label:hover{
 label:active{
 	background-color: #fff;
 	color: var(--salmon);
+}
+@media(max-width: 520px){
+	.dashboard{
+		width: clamp(160px, 80vw, 450px);
+	}
+	header{
+		font-size: clamp(14px, 1.88vw, 30px);
+	}
+	h2{
+		font-size: clamp(14px, 1.7vw, 22px);
+	}
+	ul{
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+		height: 75vh;
+		gap: 3px;
+		list-style: none;
+		font-size: clamp(12px, 1.6vw, 18px);
+	}
+	.content{
+		gap: 0;
+	}
+	main{
+		padding: 0;
+	}
+	label{
+		top: 0;
+		right: 0;
+		padding: 4px;
+	}
+}
+@media(max-width: 360px){
+	span{
+		display: none;
+	}
+	label{
+		padding: 2px;
+	}
 }
