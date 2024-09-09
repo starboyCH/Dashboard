@@ -200,7 +200,7 @@ label:active{
 		height: 75vh;
 		gap: 3px;
 		list-style: none;
-		font-size: clamp(12px, 1.6vw, 18px);
+		font-size: clamp(10px, 1.5vw, 18px);
 	}
 	.content{
 		gap: 0;
