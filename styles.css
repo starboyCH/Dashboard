@@ -46,7 +46,7 @@ header, footer{
 .content{
 	display: grid;
 	grid-area: content;
-	grid-template-columns: 20% 80%;
+	grid-template-columns: 17vw auto;
 	grid-template-areas: "nav main";
 	gap: 8px;
 }
@@ -69,7 +69,7 @@ main, nav, .dashboard, h2{
 }
 main{
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(172px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 	grid-area: main;
 	padding: 10px;
 	gap: 70px 25px;
@@ -83,9 +83,9 @@ footer{
 }
 main img{
 	padding: 3px;
-	width: clamp(80px, 17vw, 168px);
+	width: clamp(80px, 20vw, 200px);
 	background-color: var(--salmon);
-	height: clamp(64px, calc(17vw*0.8), 134px);
+	height: clamp(64px, calc(20vw*0.8), 160px);
 	transition: 0.6s;
 	margin: 30px auto;
 }
@@ -147,7 +147,7 @@ main img:nth-child(odd){
 	animation: move-right forwards 1s 1s, appear both 1s 1s;
 	animation-range: auto;
 }
-@container(max-width: 440px){
+@container(max-width: 728px){
 	main img:nth-child(even), main img:nth-child(odd){
 		animation: move-right forwards 1s 1s, appear both 1s 1s;
 	} 
@@ -185,13 +185,13 @@ label:active{
 }
 @media(max-width: 520px){
 	.dashboard{
-		width: clamp(160px, 80vw, 450px);
+		width: clamp(160px, 86vw, 450px);
 	}
 	header{
-		font-size: clamp(14px, 1.88vw, 30px);
+		font-size: clamp(9px, 1.7vw, 30px);
 	}
 	h2{
-		font-size: clamp(14px, 1.7vw, 22px);
+		font-size: clamp(9px, 1.7vw, 22px);
 	}
 	ul{
 		display: flex;
@@ -200,21 +200,27 @@ label:active{
 		height: 75vh;
 		gap: 3px;
 		list-style: none;
-		font-size: clamp(10px, 1.5vw, 18px);
+		font-size: clamp(8px, 1.7vw, 18px);
 	}
 	.content{
 		gap: 0;
 	}
 	main{
 		padding: 0;
+		grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+	}
+	main img{
+		max-width: 140px;
+		max-height: 112px;
 	}
 	label{
 		top: 0;
 		right: 0;
-		padding: 4px;
+		margin: 4px;
+		padding: 3px;
 	}
 }
-@media(max-width: 360px){
+@media(max-width: 380px){
 	span{
 		display: none;
 	}
