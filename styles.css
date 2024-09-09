@@ -21,7 +21,7 @@ body{
 	grid-template-areas: "header"
 						 "content"
 						 "footer";
-	width: clamp(240px, 76vw, 1400px);
+	width: clamp(220px, 76vw, 1400px);
 	border-radius: 12px;
 	height: fit-content;
 	animation: slide-up forwards 1.2s 0.5s, appear both 1s 0.5s;
@@ -49,6 +49,7 @@ header, footer{
 	grid-template-columns: 19vw auto;
 	grid-template-areas: "nav main";
 	gap: 8px;
+	padding: 6px;
 }
 .content, header, footer{
 	width: max-width: 100%;
@@ -222,6 +223,12 @@ label:active{
 		padding: 2px;
 	}
 	.dashboard{
-		width: clamp(240px, 95vw, 1400px);
+		width: clamp(220px, 95vw, 1400px);
+	}
+	h2{
+		font-size: clamp(11px, 1.6vw, 20px);
+	}
+	ul{
+		font-size: clamp(10px, 1.4vw, 16px);
 	}
 }
