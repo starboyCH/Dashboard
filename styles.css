@@ -4,6 +4,7 @@
 	box-sizing: border-box;
 }
 body{
+	font-display: swap;
 	font-family: Montserrat;
 	--salmon: #E15140;
 	background-image: linear-gradient(135deg, transparent, #231817);
